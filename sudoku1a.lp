@@ -6,4 +6,9 @@
 
 % Your implementation please...
 
+{sudoku(X,Y,Z) : Z = 1..n} =1 :- X = 1..n, Y = 1..n.
+% achieved: Every cell is assigned a number one through n.
+
+
+
 #show sudoku/3.
