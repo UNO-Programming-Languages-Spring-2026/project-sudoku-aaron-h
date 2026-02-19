@@ -6,12 +6,13 @@
 
 % Your implementation please...
 
-#const n = 2. % subgrid size, n*n is board size.
+#const n = 4. % board size.
+#const s = 2. % subgrid size.
 
-{sudoku(X,Y,N) : N = 1..n*n} = 1 :- X = 1..n*n, Y = 1..n*n.
-% achieved: Every cell is assigned a number one through n*n.
+{sudoku(X,Y,N) : N = 1..n} = 1 :- X = 1..n, Y = 1..n.
+% achieved: Every cell is assigned a number one through n.
 
-subgrid(X,Y,G) :- X = 1..n, Y = 1..n, G = .
+subgrid(X,Y,G) :- X = 1..n, Y = 1..n, G = 1+(((X-1)/s)*s+(Y-1)/s).
 % achieved: Every cell is assigned to a subgrid.
 
 :- sudoku(X,Y1,N), sudoku(X,Y2,N), Y1 < Y2.
