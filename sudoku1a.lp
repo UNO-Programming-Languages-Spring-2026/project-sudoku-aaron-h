@@ -6,23 +6,18 @@
 
 % Your implementation please...
 
-#const n=4.
+#const n = 4.
 
-{sudoku(X,Y,Z) : Z = 1..n} = 1 :- X = 1..n, Y = 1..n.
+{sudoku(X,Y,N) : N = 1..n} = 1 :- X = 1..n, Y = 1..n.
 % achieved: Every cell is assigned a number one through n.
 
-{subgrid(X,Y,S) : S = 1+(((x-1)/n)*n+(y-1)/n)} = 1 :- X = 1..n, Y = 1..n.
-% achieved: Every cell is assigned to a subgrid
-
-{label(X,Y,L) : L = 1..n*n} = 1 :- X = 1..n, Y = 1..n, subgrid(X,Y,S).
-% achieved: Every cell in a subgrid is assigned a label 1..n*n
-
-:- sudoku(X,Y1,Z), sudoku(X,Y2,Z), Y1 < Y2.
-% achieved: one number cannot appear twice in the same column.
-
-:- sudoku(X1,Y,Z), sudoku(X2,Y,Z), X1 < X2.
+:- sudoku(X,Y1,N), sudoku(X,Y2,N), Y1 < Y2.
 % achieved: one number cannot appear twice in the same row.
 
-:- subgrid(X,Y,S)
+:- sudoku(X1,Y,N), sudoku(X2,Y,N), X1 < X2.
+% achieved: one number cannot appear twice in the same column.
+
+:- initial(X,Y,N), not sudoku(X,Y,N).
+% achieved: solutions cannot appear where intials values are.
 
 #show sudoku/3.
