@@ -25,3 +25,4 @@ subgrid(X,Y,G) :- X = 1..n, Y = 1..n, G = 1+(((X-1)/s)*s+(Y-1)/s).
 % achieved: solutions cannot appear where intials values are.
 
 #show subgrid/3.
+#show sudoku/3.
