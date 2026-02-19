@@ -6,10 +6,13 @@
 
 % Your implementation please...
 
-#const n = 4.
+#const n = 2. % subgrid size, n*n is board size.
 
-{sudoku(X,Y,N) : N = 1..n} = 1 :- X = 1..n, Y = 1..n.
-% achieved: Every cell is assigned a number one through n.
+{sudoku(X,Y,N) : N = 1..n*n} = 1 :- X = 1..n*n, Y = 1..n*n.
+% achieved: Every cell is assigned a number one through n*n.
+
+subgrid(X,Y,G) :- X = 1..n, Y = 1..n, G = .
+% achieved: Every cell is assigned to a subgrid.
 
 :- sudoku(X,Y1,N), sudoku(X,Y2,N), Y1 < Y2.
 % achieved: one number cannot appear twice in the same row.
@@ -20,4 +23,4 @@
 :- initial(X,Y,N), not sudoku(X,Y,N).
 % achieved: solutions cannot appear where intials values are.
 
-#show sudoku/3.
+#show subgrid/3.
