@@ -24,7 +24,7 @@ subgrid(X,Y,G) :- X = 1..n, Y = 1..n, G = 1+(((X-1)/s)*s+(Y-1)/s).
 :- initial(X,Y,N), not sudoku(X,Y,N).
 % achieved: solutions cannot appear where intials values are.
 
-:- N = 1..n, subgrid(X,Y,G), not sudoku(X,Y,N).
-% achieved: Each subgrid must contain the numbers 1 through n
+:- N = 1..n, G = 1..n, not sudoku(X,Y,N) : subgrid(X,Y,G).
+% achieved: Each subgrid must contain the numbers 1 through n.
 
 #show sudoku/3.
