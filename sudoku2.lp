@@ -6,8 +6,8 @@
 
 % Your implementation please...
 
-#const n = 4. % board size.
-#const s = 2. % subgrid size.
+#const n = 9. % board size.
+#const s = 3. % subgrid size.
 
 {sudoku(X,Y,N) : N = 1..n} = 1 :- X = 1..n, Y = 1..n.
 % achieved: Every cell is assigned a number one through n.
